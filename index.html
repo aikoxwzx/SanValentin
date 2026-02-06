@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Soysh</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #4b0082;
+            background: linear-gradient(135deg, #2e003e 0%, #800080 100%);
+            height: 100vh;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            display: flex;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh; /* Para que no se salga de la pantalla */
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Sección del Video */
+        .music-box {
+            flex: 1;
+            margin-right: 40px;
+            text-align: center;
+        }
+
+        .video-frame {
+            border: 4px solid #d8bfd8;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(216, 191, 216, 0.5);
+            width: 100%;
+            aspect-ratio: 16/9;
+        }
+
+        /* Sección del Contenido */
+        .content-box {
+            flex: 1.5;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background-color: #ff1493;
+        }
+
+        /* El mensaje oculto */
+        #mensaje-oculto {
+            display: none;
+            text-align: left;
+            animation: fadeIn 1s;
+            /* Scroll para texto largo */
+            max-height: 60vh; 
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        
+        /* Estilo de la barra de scroll para que quede bonita */
+        #mensaje-oculto::-webkit-scrollbar {
+            width: 8px;
+        }
+        #mensaje-oculto::-webkit-scrollbar-thumb {
+            background: rgba(255, 105, 180, 0.5); 
+            border-radius: 4px;
+        }
+
+        #mensaje-oculto h2 {
+            color: #ffb7c5;
+            margin-top: 0;
+        }
+
+        #mensaje-oculto p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            white-space: pre-line; /* Respeta los saltos de línea */
+        }
+
+        /* Animación de los corazones */
+        .heart {
+            position: absolute;
+            top: -10vh;
+            color: #ff69b4;
+            animation: fall linear forwards;
+            font-size: 20px;
+            z-index: 1000;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 20px;
+                overflow-y: auto;
+            }
+            .music-box {
+                margin-right: 0;
+                margin-bottom: 20px;
+                width: 100%;
+            }
+            h1 { font-size: 1.8rem; }
+            #mensaje-oculto p { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="music-box">
+            <p style="margin-bottom: 10px; font-weight: bold;">Nuestra canción 🎵</p>
+            <div class="video-frame">
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.youtube.com/embed/NSRQUlPhqZo" 
+                    title="Algo Contigo - Rita Payés" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <div class="content-box">
+            <div id="pregunta-box">
+                <h1>Bubu,<br>¿quieres ser mi San Valentín?</h1>
+                <button onclick="mostrarMensaje()">Chi</button>
+            </div>
+
+            <div id="mensaje-oculto">
+                <h2>Sabia que aceptarias cari</h2>
+                <p>
+Hola mi amor, te escribo este texto solo para que sepas lo mucho que te amo y que me encantas, eres la mejor del mundo mundial. 
+
+Fue hace ya más de dos años que he pasado contigo y ha sido una montaña rusa de aventuras y emociones, pero aún así sé que después de todo lo sucedido, pase lo que pase, te querré para siempre a mi lado. Eres lo mejor que me ha podido pasar en esta vida. 
+
+Recuerdo el primer San Valentín que fue el mejor desde mis días desde que nací porque nunca nadie me había dado regalos porque me amaba o simplemente que una persona me llegara a amar tanto como para darme cosas y querer estar conmigo. No sé que es lo que tengo para que estés conmigo, no sé que me ves, pero yo estoy muy feliz de estar contigo a tu lado y seguir adelante con todo. 
+
+Que sepas que te apoyaré en todo lo que pase, que seré tu mayor fan, el número uno por supuesto. Por mucho que quieras o no estaré a tu lado por y para siempre porque te amo y eres de lo mejor que hay en todo este universo. 
+
+Que sepas que me encantas, que siempre serás mi prioridad y no mi opción, que eres perfecta y que te amo infinito y de aquí a la luna a pasitos de tortuguitas. Por cierto, esa canción siempre que la escucho me recuerda a nosotros y me hace llorar porque pienso en lo feliz que soy contigo y en lo bonito que es todo contigo, bebé. 
+
+Y bueno, ¿Quisieras ser mi San Valentín?
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function mostrarMensaje() {
+            document.getElementById('pregunta-box').style.display = 'none';
+            document.getElementById('mensaje-oculto').style.display = 'block';
+            
+            // Lanza la lluvia de corazones
+            crearLluviaCorazones();
+        }
+
+        function crearLluviaCorazones() {
+            const numeroCorazones = 50; // Cantidad de corazones
+            const body = document.body;
+
+            for (let i = 0; i < numeroCorazones; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '💜';
+                
+                // Posición y tamaño aleatorio
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+                
+                // Velocidad de caída aleatoria
+                const duration = Math.random() * 3 + 2; 
+                heart.style.animationDuration = duration + "s";
+                
+                // Retraso para que no caigan todos de golpe
+                heart.style.animationDelay = Math.random() * 2 + "s";
+
+                body.appendChild(heart);
+
+                // Eliminar el corazón después de que caiga para no llenar la memoria
+                setTimeout(() => {
+                    heart.remove();
+                }, (duration + 2) * 1000);
+            }
+        }
+    </script>
+</body>
+</html>
